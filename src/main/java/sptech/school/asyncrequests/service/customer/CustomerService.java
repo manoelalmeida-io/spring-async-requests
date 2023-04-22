@@ -1,6 +1,7 @@
 package sptech.school.asyncrequests.service.customer;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sptech.school.asyncrequests.api.configuration.BankConfiguration;
@@ -16,6 +17,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class CustomerService {
@@ -46,6 +48,8 @@ public class CustomerService {
 
     registeredAccount.setAccountBalance(registeredAccountBalance);
     registeredCustomer.setAccount(registeredAccount);
+
+    log.info("Customer registered, id: {}", registeredCustomer.getId());
 
     return registeredCustomer;
   }
