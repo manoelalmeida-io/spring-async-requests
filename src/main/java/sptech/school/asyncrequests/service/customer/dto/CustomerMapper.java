@@ -29,6 +29,28 @@ public class CustomerMapper {
     return customerResponseDto;
   }
 
+  public CustomerExportXlsxDto toExportXlsxDto(Customer customer) {
+    if (customer == null) {
+      return null;
+    }
+
+    CustomerExportXlsxDto customerExportXlsxDto = new CustomerExportXlsxDto();
+    customerExportXlsxDto.setFirstName(customer.getFirstName());
+    customerExportXlsxDto.setLastName(customer.getLastName());
+    customerExportXlsxDto.setEmail(customer.getEmail());
+    customerExportXlsxDto.setPhone(customer.getPhone());
+    customerExportXlsxDto.setCreatedAt(customer.getCreatedAt());
+    customerExportXlsxDto.setUpdatedAt(customer.getUpdatedAt());
+
+    if (customer.getAccount() != null) {
+      customerExportXlsxDto.setAgency(customer.getAccount().getAgency());
+      customerExportXlsxDto.setNumber(customer.getAccount().getNumber());
+      customerExportXlsxDto.setBank(customer.getAccount().getBank());
+    }
+
+    return customerExportXlsxDto;
+  }
+
   public Customer toDomain(CustomerCreateRequestDto customerCreateRequestDto) {
     if (customerCreateRequestDto == null) {
       return null;

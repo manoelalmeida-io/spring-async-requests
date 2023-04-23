@@ -35,3 +35,6 @@ build/
 ### DB ###
 *.mv.db
 *.trace.db
+
+### Report ###
+customers.xlsx
